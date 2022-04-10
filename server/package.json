@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemailer": "^6.7.3",
+    "sqlite": "^4.0.25",
+    "sqlite3": "^5.0.2"
+  },
+  "scripts": {
+    "createDB": "node ./database/createSchema.js",
+    "createCustomer": "node ./database/customers/createCustomer.js",
+    "readCustomer": "node ./database/customers/readCustomers.js"
+  }
+}
