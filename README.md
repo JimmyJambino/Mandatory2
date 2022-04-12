@@ -1,11 +1,13 @@
 # Mandatory2
 
-Packages required:
+Install packages:
 dotenv
 nodemailer
 sqlite
 sqlite3
 bcrypt
+session-express
+express-rate-limit
 helmet(?)
 
 Notes for hashing:

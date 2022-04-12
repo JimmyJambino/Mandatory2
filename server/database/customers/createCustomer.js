@@ -14,4 +14,7 @@ async function hashPassword() {
 }
 
 hashPassword()
-//db.run("INSERT INTO customers (firstName, lastName, email, hashedPassword) VALUES (?, ?, ? ,?)", firstName, lastName, email, hashPassword())
+
+/* ######## TODO ############
+export functionality so it can be called from routers or endpoints
+*/
