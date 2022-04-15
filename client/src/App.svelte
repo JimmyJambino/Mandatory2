@@ -1,52 +1,49 @@
 <script>
 	import {Router, Link, Route} from "svelte-navigator"
-	import About from "./pages/About.svelte"
+	import Store from "./pages/Store.svelte"
 	import Home from "./pages/Home.svelte"
 	import Login from "./pages/Login.svelte"
-	import {onMount} from "svelte"
-	import {baseURL} from "./store/generalStore.js"
-	onMount(async ()=> { // calls this function when the component mounts/loads
-		//const response = await fetch($baseURL+"/customers") //Remember to import cors in backend for this to work.
-		//const {data} = await response.json() // {data} to specify/destructure what we want from the database, but right now it is not applicable.
-		//console.log(data)
-	})
+	import Logout from "./pages/Logout.svelte"
+	import Register from "./pages/Register.svelte"
+	import Cart from "./pages/Cart.svelte"
+	import isLoggedIn from "./store/writeableStore.js" // also check with fetch for session?
+	
+	
+	
 </script>
 
 <main>
 	<Router>
 		<nav>
 			<Link to="/">Home</Link>
-			<Link to="/about">About</Link>
+			<Link to="/store">Store</Link>
+			{#if $isLoggedIn}
+			<Link to="/logout">Logout</Link>
+			{:else}
 			<Link to="/login">Login</Link>
+			{/if}
 		</nav>
 	
-		<Route path="/about" component={About} />
+		<Route path="/store" component={Store} />
 		<Route path="/" component={Home} />
 		<Route path="/login" component={Login}/>
+		<Route path="/logout" component={Logout}/>
+		<Route path="/register" component={Register}/>
+		<Route path="/cart" component={Cart}/>
 	</Router>
-
-	<h1>Wielkommen</h1>
-	<button on:click={ async() => {
-		const res = await fetch($baseURL+"/beers")
-		const data = await res.json()
-		console.log(data)
-	}}>Test Response</button>
-	
 </main>
 
 <style>
+	nav {
+		border-color: black;
+		border: 0.5em;
+		border-style: solid;
+	}
 	main {
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
