@@ -1,4 +1,8 @@
 <script>
+	import {Router, Link, Route} from "svelte-navigator"
+	import About from "./pages/About.svelte"
+	import Home from "./pages/Home.svelte"
+	import Login from "./pages/Login.svelte"
 	import {onMount} from "svelte"
 	import {baseURL} from "./store/generalStore.js"
 	onMount(async ()=> { // calls this function when the component mounts/loads
@@ -9,12 +13,25 @@
 </script>
 
 <main>
+	<Router>
+		<nav>
+			<Link to="/">Home</Link>
+			<Link to="/about">About</Link>
+			<Link to="/login">Login</Link>
+		</nav>
+	
+		<Route path="/about" component={About} />
+		<Route path="/" component={Home} />
+		<Route path="/login" component={Login}/>
+	</Router>
+
 	<h1>Wielkommen</h1>
 	<button on:click={ async() => {
-		const res = await fetch($baseURL+"/customers")
+		const res = await fetch($baseURL+"/beers")
 		const data = await res.json()
 		console.log(data)
 	}}>Test Response</button>
+	
 </main>
 
 <style>

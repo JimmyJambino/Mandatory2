@@ -8,6 +8,7 @@ app.use(express.json())
 const PORT = process.env.PORT || 3000
 //import db from "./database/createConnection.js"
 import readCustomer from "./database/customers/readCustomer.js"
+import readBeer from "./database/beers/readBeer.js"
 //app.use(express.static("public")) not using it yet.
 import cors from "cors"
 import { ok } from "assert"
@@ -29,6 +30,11 @@ app.get("/", (req, res) => {
 app.get("/customers", async (req, res) => {
     const customers = await readCustomer.readAll()
     res.send(customers)
+})
+
+app.get("/beers", async (req, res) => {
+    const beers = await readBeer.readAll()
+    res.send(beers)
 })
 
 app.post("/customers", (req, res) => {

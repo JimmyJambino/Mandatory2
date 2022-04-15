@@ -1,5 +1,10 @@
 # Mandatory2
 
+TODO: 
+Apply single-page application thingy. Otherwise we can't immediately go to a certain path unless we use the navigator. write --single after sirv
+^this also works in rollup? even tho it says it doesn't recognize the option.
+Once testing that all CRUD functions work individually, assimilate each category into their own single CRUD.js, fx customerCRUD.js
+
 Install packages:
 dotenv
 nodemailer
