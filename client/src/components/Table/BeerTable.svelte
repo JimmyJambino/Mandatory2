@@ -1,12 +1,13 @@
 <script>
     import TableRow from "./TableRow.svelte"
+    export let isShop = true
     export let beers = [
     ]    
 </script>
 
 <table>
     <TableRow/>
-    <TableRow isTableHead={false} beers={beers}/>
+    <TableRow isTableHead={false} isShop={isShop} beers={beers}/>
 </table>
 
 <style>

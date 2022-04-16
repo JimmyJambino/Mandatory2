@@ -1,9 +1,8 @@
 <script>
     import fetchPost from "../../scripts/utils.js"
     import {baseURL} from "../store/generalStore.js"
-    import isLoggedIn from "../store/writeableStore.js"
+    import {isLoggedIn} from "../store/writeableStore.js"
     import {Router, Link, Route} from "svelte-navigator"
-    import Register from "./Register.svelte"
     let email
     let hpw
     async function login() { // change buttons or page or something if successful, given response from backend.
@@ -11,7 +10,7 @@
             "email": email,
             "password": hpw
         }
-        const data = await fetchPost($baseURL+"/api/customers", user).then(res => res.json())
+        const data = await fetchPost($baseURL+"/api/customers/login", user).then(res => res.json())
         if(data.customer) { // Checks if a customer was found
             isLoggedIn.update(n => !n)
         } else if(data.errorMsg === "password") {

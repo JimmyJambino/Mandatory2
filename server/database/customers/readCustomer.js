@@ -6,5 +6,6 @@ async function readAll() {
     return result
 }
 const testExport = 5
+console.log(await readAll())
 
 export default {readAll, testExport}

@@ -1,4 +1,4 @@
 import { writable } from "svelte/store";
 
-const isLoggedIn = writable(false)
-export default isLoggedIn
+export const isLoggedIn = writable(false)
+export const cart = writable([])

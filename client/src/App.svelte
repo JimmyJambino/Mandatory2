@@ -6,7 +6,7 @@
 	import Logout from "./pages/Logout.svelte"
 	import Register from "./pages/Register.svelte"
 	import Cart from "./pages/Cart.svelte"
-	import isLoggedIn from "./store/writeableStore.js" // also check with fetch for session?
+	import {isLoggedIn} from "./store/writeableStore.js" // also check with fetch for session?
 	
 	
 	

@@ -3,7 +3,7 @@ const router = express.Router() // = Router()
 import db from "../database/createConnection.js"
 import bcrypt from "bcrypt"
 
-router.post("/api/customers", async (req, res) => {
+router.post("/api/customers/login", async (req, res) => {
     const {email} = req.body
     const {password} = req.body
     
@@ -34,5 +34,25 @@ router.get("/api/customers", async (req, res) => {
 router.get("/api/customers/logout", (req, res) => {
     req.session.destroy()
     res.send({})
+})
+
+router.post("/api/customers/signup", async(req, res) => {
+    const {email} = req.body
+    const {firstName} = req.body
+    const {lastName} = req.body
+    const {pw} = req.body
+    const test = {firstName, lastName, email, pw}
+    console.log(test)
+    const customer = await db.get(`SELECT * FROM customers WHERE email = ?`, email)
+    if(customer) {
+        console.log("Email used")
+        res.send({errorMsg: "emailUsed"})
+    } else {
+        console.log("Registering user..")
+        const hashedPassword = await bcrypt.hash(pw, 10) // Maybe don't add a literal here?
+        db.run("INSERT INTO customers (firstName, lastName, email, hashedPassword) VALUES (?, ?, ? ,?)", [firstName, lastName, email, hashedPassword])
+        res.send({})
+    }
+    
 })
 export default router

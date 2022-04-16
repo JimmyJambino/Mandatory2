@@ -10,11 +10,14 @@ let transporter = nodemailer.createTransport({
         pass: process.env.EMAIL_PASSWORD
     }
 })
-let mailDetails = {
-    from: process.env.EMAIL_USER,
-    to: 'jimm6757@stud.kea.dk',
-    subject: 'Test mail',
-    text: 'Test Content for email service'
+let mailDetails = {}
+function setMailDetails(email, name) {
+    mailDetails = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Beerlicious Signup (NO REPLY)',
+        text: 'Welcome to Beerlicious ' + name + '! \nThis is the only mail you will receive for now. When you make an order, the full details will also be sent to this mail.'
+    }
 }
 
 transporter.sendMail(mailDetails, function(err, data) {

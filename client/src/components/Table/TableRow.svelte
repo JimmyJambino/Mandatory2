@@ -1,6 +1,12 @@
 <script>
     import TableHead from "./TableHead.svelte"
+    import {cart} from "../../store/writeableStore.js"
+    function addToCart(beer) {
+        cart.update(n => [...n, beer])
+        console.log($cart)
+    }
     export let isTableHead = true
+    export let isShop
     export let beers = [
     ]
 </script>
@@ -16,7 +22,9 @@
 <td>{beer.amount} in stock</td>
 <td>{beer.price} DKK</td>
 <td><img src={beer.imgURL} alt="image"></td>
-<td><button>Add to cart</button></td>
+{#if isShop}
+<td><button on:click={addToCart(beer)}>Add to cart</button></td>
+{/if}
 </tr>
 {/each}
 {/if}

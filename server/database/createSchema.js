@@ -41,7 +41,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS customers (
     lastName VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     hashedPassword VARCHAR(100) NOT NULL
-)`)
+);`)
 
 db.exec(`CREATE TABLE IF NOT EXISTS beers (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -54,13 +54,13 @@ db.exec(`CREATE TABLE IF NOT EXISTS beers (
     country VARCHAR(100) NOT NULL,
     imgURL VARCHAR(200), 
     description VARCHAR(150)
-)`)
+);`)
 
 db.exec(`CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     customerId INTEGER NOT NULL,
     FOREIGN KEY(customerId) REFERENCES customers(id)
-)`)
+);`)
 
 db.exec(`CREATE TABLE IF NOT EXISTS order_beers (
     orderId INTEGER NOT NULL,
@@ -68,4 +68,4 @@ db.exec(`CREATE TABLE IF NOT EXISTS order_beers (
     amount INTEGER NOT NULL,
     FOREIGN KEY(orderId) REFERENCES orders(id),
     FOREIGN KEY(beerId) REFERENCES beers(id)
-)`)
+);`)
