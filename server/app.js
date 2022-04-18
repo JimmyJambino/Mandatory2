@@ -13,6 +13,7 @@ import cors from "cors"
 import helmet from "helmet"
 import rateLimit from "express-rate-limit"
 import customerRouter from "./routers/customerRouter.js"
+import beerRouter from "./routers/beerRouter.js"
 app.use(helmet())
 const authLimiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
@@ -31,6 +32,7 @@ app.use(session({
 }))
 app.use(cors())
 app.use(customerRouter)
+app.use(beerRouter)
 
 //app.use(express.static(path.resolve("../client/public"))) acts as the new root, used to get access to public in client?
 
@@ -39,10 +41,10 @@ app.get("/customers", async (req, res) => {
     res.send(customers)
 })
 
-app.get("/beers", async (req, res) => {
-    const beers = await readBeer.readAll()
-    res.send(beers)
-})
+// app.get("/beers", async (req, res) => {
+//     const beers = await readBeer.readAll()
+//     res.send(beers)
+// })
 
 app.get("/loggedIn", (req, res) => {
     if(req.session.user) {
@@ -50,9 +52,7 @@ app.get("/loggedIn", (req, res) => {
     } else {
         res.send({data: false})
     }
-    
 })
-
 
 app.listen(PORT, () => {
     console.log("Express server connection established.")

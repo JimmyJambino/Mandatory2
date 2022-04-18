@@ -11,19 +11,18 @@ let transporter = nodemailer.createTransport({
     }
 })
 let mailDetails = {}
-function setMailDetails(email, name) {
+export function sendMail(email, name) {
     mailDetails = {
         from: process.env.EMAIL_USER,
         to: email,
         subject: 'Beerlicious Signup (NO REPLY)',
-        text: 'Welcome to Beerlicious ' + name + '! \nThis is the only mail you will receive for now. When you make an order, the full details will also be sent to this mail.'
+        text: 'Welcome to Beerlicious ' + name + '! \nThis is the only mail you will receive for now.'
     }
+    transporter.sendMail(mailDetails, function(err, data) {
+        if(err) {
+            console.log('Error Occurs');
+        } else {
+            console.log('Email sent successfully');
+        }
+    })
 }
-
-transporter.sendMail(mailDetails, function(err, data) {
-    if(err) {
-        console.log('Error Occurs');
-    } else {
-        console.log('Email sent successfully');
-    }
-})

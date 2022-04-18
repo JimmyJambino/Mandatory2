@@ -9,7 +9,7 @@
     async function signup() {
         // fetch post and check if email is already in use, then clear email field, otherwise go to success page / store page with a notification that sign up is complete.
         // Send email from backend as well
-        const response = await fetchPost($baseURL+"/api/customers/signup",{firstName, lastName, email, pw}).then(res => res.json())
+        const response = await fetchPost($baseURL+"/api/customers/",{firstName, lastName, email, pw}).then(res => res.json())
         console.log(response)
     }
 </script>

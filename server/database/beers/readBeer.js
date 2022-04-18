@@ -7,6 +7,11 @@ async function readAll() {
     console.log(result)
     return result
 }
-//readAll()
+function printWhatever() {
+    console.log("Hello Print")
+}
 
-export default {readAll}
+// read searches
+
+//export default {readAll}
+export default {readAll, printWhatever}
