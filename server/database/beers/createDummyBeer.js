@@ -1,16 +1,4 @@
 import db from "../createConnection.js"
-/*
-beer = {
-    id,
-    name,
-    amount, // In the beers table, this is the amount in storage, and in the orders table, it is the amount?
-    price, // in DKK
-    volume, // in cl
-    percentage,
-    type,
-    country,
-    description?
-}*/
 
 class Beer {
     constructor(name, amount, price, volume, percentage, type, country, imgURL, description) { // relevance at the end? check if description is null, then apply accordingly.
@@ -26,7 +14,6 @@ class Beer {
     }
 }
 
-// Beers also need a picture?
 const beers = [
     new Beer("Heineken Original", 10, 7, 33, 4.2, "Lager", "The Netherlands", 
     "https://cdn1.bevco.dk/thumbnail/6a/b3/8d/1642080458/heineken-pilsner-4-6-24x33-cl-daase-9791a_644x644.png"),
@@ -36,7 +23,6 @@ const beers = [
     "https://www.wine-searcher.com/images/labels/25/70/11382570.jpg?width=260&height=260&fit=bounds&canvas=260,260", 
     "Strawberry Lemon Daquiri Berliner Weisse")
 ]
-//beers.forEach(elem => {console.log(elem.name)})
 
 async function createDummyBeers() { // To fill out the database for testing, later to actually fill out the database with pre-made beers.
     beers.forEach(beer => {

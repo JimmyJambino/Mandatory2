@@ -1,11 +1,9 @@
 # Mandatory2
 
 TODO: 
-Frontend: Cart functionality to buy and make order, reroute when logging in. Toastr/notification upon registration. Finish Toastr.
-Backend: routers for orders etc. and sending email when registering.
+Frontend: Profile page and better styling.
+Backend: routers and database commands for orders 
 Once testing that all CRUD functions work individually, assimilate each category into their own single CRUD.js, fx customerCRUD.js
-
-Sign up notification when not logged in, go to cart notification when adding stuff to cart.
 
 Install packages:
 dotenv

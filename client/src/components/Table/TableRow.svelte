@@ -3,7 +3,6 @@
     import {cart} from "../../store/writeableStore.js"
     function addToCart(beer) {
         cart.update(n => [...n, beer])
-        console.log($cart)
     }
     export let isTableHead = true
     export let isShop
@@ -13,18 +12,18 @@
 
 {#if isTableHead}
 <tr>
-<TableHead/>
+    <TableHead/>
 </tr>
 {:else}
 {#each beers as beer}
 <tr>
-<td>{beer.name}</td>
-<td>{beer.amount} in stock</td>
-<td>{beer.price} DKK</td>
-<td><img src={beer.imgURL} alt="image"></td>
-{#if isShop}
-<td><button on:click={addToCart(beer)}>Add to cart</button></td>
-{/if}
+    <td>{beer.name}</td>
+    <td>{beer.amount} in stock</td>
+    <td>{beer.price} DKK</td>
+    <td><img src={beer.imgURL} alt="image"></td>
+    {#if isShop}
+    <td><button on:click={addToCart(beer)}>Add to cart</button></td>
+    {/if}
 </tr>
 {/each}
 {/if}

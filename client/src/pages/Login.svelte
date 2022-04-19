@@ -2,28 +2,30 @@
     import fetchPost from "../../scripts/utils.js"
     import {baseURL} from "../store/generalStore.js"
     import {isLoggedIn} from "../store/writeableStore.js"
-    import {Router, Link, Route} from "svelte-navigator"
+    import {Router, Link, useNavigate} from "svelte-navigator"
+    import {toast} from "@zerodevx/svelte-toast"
     let email
     let hpw
-    async function login() { // change buttons or page or something if successful, given response from backend.
-        const user = {
+    const navigate = useNavigate()
+    async function login() {
+        const userLogin = {
             "email": email,
             "password": hpw
         }
-        const data = await fetchPost($baseURL+"/api/customers/login", user).then(res => res.json())
-        if(data.customer) { // Checks if a customer was found
+        const data = await fetchPost($baseURL+"/api/customers/login", userLogin).then(res => res.json())
+        if(data.customer) {
             isLoggedIn.update(n => !n)
+            toast.push('Successfully signed in :)')
+            navigate("/")
         } else if(data.errorMsg === "password") {
             document.getElementById("errorMsg").innerText = "Incorrect Password"
             document.getElementById("password").value = ""
         }
-        else { // doesn't exist
+        else {
         document.getElementById("errorMsg").innerText = "Email not found in database"
         }
-        console.log(data)
     }
 </script>
-
 <h1>Login Page</h1>
 
 <input type=text bind:value={email} placeholder="Email">

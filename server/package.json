@@ -13,9 +13,6 @@
     "sqlite3": "^5.0.2"
   },
   "scripts": {
-    "createDB": "node ./database/createSchema.js",
-    "createCustomer": "node ./database/customers/createCustomer.js",
-    "readCustomer": "node ./database/customers/readCustomer.js",
-    "deleteCustomer": "node ./database/customers/deleteCustomer.js"
+    "createDB": "node ./database/createSchema.js"
   }
 }

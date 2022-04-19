@@ -4,4 +4,4 @@
     isLoggedIn.update(n => !n)
     fetch($baseURL+"/api/customers/logout")
 </script>
-<h1>Sup homie you're in the end game now.</h1>
+<h1>You have successfully logged out.</h1>

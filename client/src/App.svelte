@@ -11,7 +11,7 @@
 	import {baseURL} from "./store/generalStore.js"
     import {onMount} from "svelte"
 	import {beers} from "./store/writeableStore.js"
-	import {SvelteToast, toast} from '@zerodevx/svelte-toast'
+	import {SvelteToast} from '@zerodevx/svelte-toast'
 
     onMount(async ()=> { 
         const response = await fetch($baseURL+"/api/beers") 
@@ -22,14 +22,12 @@
 		const response = await fetch($baseURL+"/api/beers") 
 		const data = await response.json() 
         beers.update(() => data)
-		console.log("1 minute has passed")
-	}, 60000) // once every minute
+	}, 60000) 
 
-	//const options = {} // Can change theme of toast etc.
 </script>
 <Header/>
 <SvelteToast/>
-<button on:click={() => toast.push('Hello world!')}>EMIT TOAST</button>
+
 <main>
 	<Router>
 		<nav>
@@ -41,7 +39,6 @@
 			<Link to="/login">Login</Link>
 			{/if}
 		</nav>
-	
 		<Route path="/store" component={Store} />
 		<Route path="/" component={Home} />
 		<Route path="/login" component={Login}/>
@@ -50,6 +47,10 @@
 		<Route path="/cart" component={Cart}/>
 	</Router>
 </main>
+
+<div>
+	<footer><img src="https://www.coolgenerator.com/Data/Textdesign/202204/aaf652f6575c816f9d28067ab9e8b69b.png" alt="image"></footer>
+</div>
 
 <style>
 	nav {
@@ -62,12 +63,22 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
-		
+		min-height: calc(100vh - 13.5em);
 	}
+	 
 
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
 		}
+	}
+	
+	div {
+		display: flex;
+		justify-content: center;
+	}
+
+	footer {
+		padding: 1em;
 	}
 </style>
