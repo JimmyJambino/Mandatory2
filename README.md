@@ -1,19 +1,8 @@
 # Mandatory2
 
 TODO: 
-Frontend: Profile page and better styling.
+Frontend: Profile page and better styling. Save beers in the cart in a better way.
 Backend: routers and database commands for orders 
-Once testing that all CRUD functions work individually, assimilate each category into their own single CRUD.js, fx customerCRUD.js
-
-Install packages:
-dotenv
-nodemailer
-sqlite
-sqlite3
-bcrypt
-session-express
-express-rate-limit
-helmet(?)
 
 Notes for hashing:
 The "real" password is not saved in the database anywhere, only the hashed password.
