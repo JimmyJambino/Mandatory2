@@ -23,6 +23,8 @@ app.use(cors())
 app.use(customerRouter)
 app.use(beerRouter)
 
+
+
 app.listen(PORT, () => {
     console.log("Express server connection established.")
 })

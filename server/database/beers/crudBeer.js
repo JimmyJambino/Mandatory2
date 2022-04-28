@@ -1,6 +1,6 @@
 import db from "../createConnection.js"
 
-export async function createBeer(beer) { 
+export async function createBeers(beer) { 
     db.run(`INSERT INTO beers (name, amount, price, volume, percentage, type, country, imgURL, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
         beer.name, beer.amount, beer.price, beer.volume, beer.percentage, beer.type, beer.country, beer.imgURL, beer.description)   
 }

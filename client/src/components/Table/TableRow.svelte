@@ -10,23 +10,19 @@
     ]
 </script>
 
-{#if isTableHead}
+
 <tr>
     <TableHead/>
 </tr>
-{:else}
 {#each beers as beer}
 <tr>
     <td>{beer.name}</td>
     <td>{beer.amount} in stock</td>
     <td>{beer.price} DKK</td>
     <td><img src={beer.imgURL} alt="image"></td>
-    {#if isShop}
-    <td><button on:click={addToCart(beer)}>Add to cart</button></td>
-    {/if}
+    <!-- <td><button on:click={addToCart(beer)}>Remove from cart</button></td> -->
 </tr>
 {/each}
-{/if}
 <style>    
     tr {
 		border: 1px;

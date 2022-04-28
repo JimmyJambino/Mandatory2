@@ -1,6 +1,6 @@
 <script>
     import {cart} from "../store/writeableStore.js"
-    import BeerTable from "../components/Table/BeerTable.svelte"
+    import CartTable from "../components/Table/CartTable.svelte"
     import {isLoggedIn} from "../store/writeableStore.js"
     import {useNavigate} from "svelte-navigator"
     import {toast} from "@zerodevx/svelte-toast"
@@ -24,7 +24,7 @@
 
 <h1>Items in your cart</h1>
 <div>
-<BeerTable isShop={false} beers={$cart}/>
+<CartTable isShop={false} beers={$cart}/>
 </div>
 <div> 
 <button on:click={checkoutCart}>Check out</button>
